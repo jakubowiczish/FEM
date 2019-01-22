@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from numpy.ma import sin
 from scipy.integrate import quad
 
 
@@ -11,28 +10,30 @@ from scipy.integrate import quad
 # -a(0) * u'(0) + beta * u(0) = gamma
 # u(1) = u1
 
-def a(x): return 0
+def a(x): return 1
 
 
-def b(x): return 1
+def b(x): return 2
 
 
-def c(x): return 0
+def c(x): return -1
 
 
-def f(x): return x*x
+def f(x): return -x * x + 4 * x + 3
 
 
-beta = 0
-gamma = 0
-u1 = 1 / 2
+beta = 1
+gamma = -1
+u1 = 0
 n = 50
 
 
+# Basis function for FEM
 def basis_function(k: int):
     return lambda x: max(0.0, (1.0 - abs(x * n - k)))
 
 
+# The derivative of the basis function
 def basis_function_derivative(k):
     def function_derivative(x):
         if basis_function(k)(x) == 0:
@@ -45,6 +46,7 @@ def basis_function_derivative(k):
     return function_derivative
 
 
+# The left side of the equation
 def b_u_v(u, v, d_u, d_v, limit_a: float, limit_b: float):
     def first_component(x): return a(x) * d_u(x) * d_v(x)
 
@@ -60,6 +62,7 @@ def b_u_v(u, v, d_u, d_v, limit_a: float, limit_b: float):
     )
 
 
+# The right side of the equation
 def l_v(v, limit_a, limit_b):
     def first_component(x): return f(x) * v(x)
 
@@ -69,9 +72,10 @@ def l_v(v, limit_a, limit_b):
     )
 
 
+# Method that fills the matrix with basis functions
 def fill_b_u_v_matrix(i: int, j: int):
-    limit_a = max(0.0, (i - 1) / n)
-    limit_b = min(1.0, (j + 1) / n)
+    limit_a = min(max(0.0, (i - 1) / n), max(0.0, (j - 1) / n))
+    limit_b = max(min(1.0, (j + 1) / n), min(1.0, (i + 1) / n))
 
     return b_u_v(
         basis_function(i),
@@ -83,6 +87,7 @@ def fill_b_u_v_matrix(i: int, j: int):
     )
 
 
+# Method returns solution for the FEM
 def get_solution():
     left_matrix = np.empty((n, n))
 
@@ -110,7 +115,6 @@ def get_solution():
                     basis_function_derivative(i),
                     max(0.0, (i - 1) / n),
                     min(1.0, (i + 1) / n)
-
                 )
         )
 
