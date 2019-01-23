@@ -1,7 +1,24 @@
 # FEM
 
 Program that solves given differential equation using finite element method:
-![image](https://user-images.githubusercontent.com/29823037/51608501-f06e9a80-1f17-11e9-96b0-fb887629675a.png)
+
+The equation and assumptions:
+![image](https://user-images.githubusercontent.com/29823037/51615525-5a8f3b80-1f28-11e9-9d39-49a3d9f38fde.png)
+
+User input:
+![image](https://user-images.githubusercontent.com/29823037/51615342-dccb3000-1f27-11e9-92ac-af9e7003f646.png)
+
+Basis function:
+![image](https://user-images.githubusercontent.com/29823037/51615471-3cc1d680-1f28-11e9-9cbf-268cd198a9e8.png)
+
+B(u,v)
+![image](https://user-images.githubusercontent.com/29823037/51615384-fcfaef00-1f27-11e9-857d-9ad12b897796.png)
+
+l(v):
+![image](https://user-images.githubusercontent.com/29823037/51615289-ba391700-1f27-11e9-9e91-b5c54e766817.png)
+
+
+Step by step:
 
 Basis function: 
 ![img_20190123_135221](https://user-images.githubusercontent.com/29823037/51608026-a0430880-1f16-11e9-9e53-a4bd56f9d968.jpg)
