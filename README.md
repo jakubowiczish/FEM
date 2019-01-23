@@ -21,7 +21,7 @@ l(v):
 Step by step:
 
 Basis function: 
-![img_20190123_135221](https://user-images.githubusercontent.com/29823037/51608026-a0430880-1f16-11e9-9e53-a4bd56f9d968.jpg)
+![img_20190123_163227](https://user-images.githubusercontent.com/29823037/51617524-b0fe7900-1f2c-11e9-90b2-f66ea3a50664.jpg)
 
 B(u,v) and l(v):
 ![img_20190123_135136](https://user-images.githubusercontent.com/29823037/51607994-87d2ee00-1f16-11e9-8026-373d0f54819f.jpg)
